@@ -565,6 +565,9 @@ router.put("/admin/trips/:id", requireAuth, requireAdmin, async (req, res) => {
       finished,
       status,
       finishedAt,
+
+      pago,
+      pagoAt,
     } = req.body;
 
     if (typeof plate !== "undefined") {
@@ -651,6 +654,14 @@ router.put("/admin/trips/:id", requireAuth, requireAdmin, async (req, res) => {
 
     if (typeof finishedAt !== "undefined") {
       trip.finishedAt = finishedAt ? new Date(finishedAt) : null;
+    }
+
+    if (typeof pago !== "undefined") {
+      trip.pago = pago === true;
+    }
+
+    if (typeof pagoAt !== "undefined") {
+      trip.pagoAt = pagoAt ? new Date(pagoAt) : null;
     }
 
     const baseFrete = Number(trip.totalDoFrete) || 0;

@@ -56,7 +56,10 @@ const TripSchema = new Schema({
   finished: { type: Boolean, default: false },
   status: { type: String, default: "aberto" },
   finishedAt: { type: Date, default: null },
-  
+
+  pago: { type: Boolean, default: false, index: true },
+  pagoAt: { type: Date, default: null },
+
   latitude: { type: Number },
   longitude: { type: Number },
   locationAccuracy: { type: Number },
